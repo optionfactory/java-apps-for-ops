@@ -1,6 +1,6 @@
 package net.optionfactory.javaexamples;
 
-public class Example01Sleep {
+public class MainThreadSleeping {
 
     private final static long SLEEP_TIME_IN_MILLIS = 600_000;
 

@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-public class Example04LeakHashCode {
+public class MemoryLeakDueToMissingEqHash {
 
     private final static int ELEMENTS_IN_LIST = 10_000_000;
 

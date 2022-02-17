@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
-public class Example05Leak1 {
+public class UnboundedQueueAlt {
 
     private final static int SLEEP_TIME_PRODUCER = 100;
     private final static int SLEEP_TIME_CONSUMER = 1000;
@@ -72,14 +72,14 @@ public class Example05Leak1 {
                                     queue.take();
                                     counter.incrementAndGet();
                                 } catch (InterruptedException ex) {
-                                    Logger.getLogger(Example05Leak1.class.getName()).log(Level.SEVERE, null, ex);
+                                    Logger.getLogger(UnboundedQueueAlt.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             });
                     System.out.println(String.format("consumed %d elements from queue", counter.get()));
                     Thread.sleep(sleepTime);
                 }
             } catch (InterruptedException ex) {
-                Logger.getLogger(Example05Leak1.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UnboundedQueueAlt.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

@@ -2,7 +2,7 @@ package net.optionfactory.javaexamples;
 
 import java.util.stream.LongStream;
 
-public class Example02Threads {
+public class MixedThreadWorkload {
 
     private final static long SLEEP_TIME_IN_MILLIS = 600_000;
     private final static long PRIME_NUMBERS_TILL = 1_000_000;

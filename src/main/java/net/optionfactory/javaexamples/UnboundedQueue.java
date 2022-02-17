@@ -5,9 +5,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.IntStream;
 
-public class Example05Leak {
+public class UnboundedQueue {
 
     private final static int SLEEP_TIME_PRODUCER = 1;
     private final static int SLEEP_TIME_CONSUMER = 1000;
@@ -72,7 +71,7 @@ public class Example05Leak {
                     Thread.sleep(sleepTime);
                 }
             } catch (InterruptedException ex) {
-                Logger.getLogger(Example05Leak.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UnboundedQueue.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

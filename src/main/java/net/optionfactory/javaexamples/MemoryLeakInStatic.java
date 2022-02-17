@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Example03Static {
+public class MemoryLeakInStatic {
 
     private final static int ELEMENTS_IN_LIST = 10_000_000;
     private final static long SLEEP_TIME_IN_MILLIS = 600_000;
