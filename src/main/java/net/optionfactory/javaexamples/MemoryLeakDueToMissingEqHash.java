@@ -1,7 +1,6 @@
 package net.optionfactory.javaexamples;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -13,27 +12,27 @@ public class MemoryLeakDueToMissingEqHash {
         System.out.println(String.format("Start main"));
         Thread.sleep(10000); // waiting time to attach profiler
         System.out.println(String.format("Add elements in cache"));
-        final CacheUsers caches = new CacheUsers();
+        final CacheUsers cache = new CacheUsers();
         IntStream.range(0, ELEMENTS_IN_LIST)
-                .forEach(e -> caches.add(new User("foo")));
-        final Set<User> elements = caches.getCaches();
+                .forEach(e -> cache.add(new User("foo")));
+        final Set<User> elements = cache.getStorage();
         System.out.println(String.format("Elements in set: %d", elements.size()));
         Thread.sleep(5_000);
-        // FIXME: GB can not be executed, elements are in heap memory also with hashcode defined
+        // FIXME: GC does not help, all copies are held onto by storage as none was deduped
         System.out.println("Ending main");
 
     }
 
     public static class CacheUsers {
 
-        private final Set<User> caches = new HashSet<>();
+        private final Set<User> storage = new HashSet<>();
 
         public void add(User myObject) {
-            caches.add(myObject);
+            storage.add(myObject);
         }
 
-        public Set<User> getCaches() {
-            return caches;
+        public Set<User> getStorage() {
+            return storage;
         }
 
     }

@@ -5,7 +5,7 @@ import java.util.stream.LongStream;
 public class MixedThreadWorkload {
 
     private final static long SLEEP_TIME_IN_MILLIS = 600_000;
-    private final static long PRIME_NUMBERS_TILL = 1_000_000;
+    private final static long PRIME_NUMBERS_TILL = 10_000_000;
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println(String.format("Start main"));
@@ -52,9 +52,8 @@ public class MixedThreadWorkload {
         @Override
         public void run() {
             LongStream.rangeClosed(2, upper)
-                    .boxed()
-                    .filter(n -> isPrime(n))
-                    .forEach(n -> System.out.println(n));
+                    .filter(this::isPrime)
+                    .forEach(System.out::println);
             System.out.println("Ending prime thread");
         }
 
